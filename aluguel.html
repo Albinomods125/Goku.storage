@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Planos - Bot Goku</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0a0a0a;
+      --card-color: #1a1a1a;
+      --text-color: rgba(255, 255, 255, 0.92);
+      --accent-color: #00e5ff;
+      --accent-gradient: linear-gradient(135deg, #00e5ff 0%, #00bcd4 100%);
+      --highlight: #00acc1;
+      --border-color: #2e2e2e;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      --glow: 0 0 15px rgba(0, 229, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(30, 30, 30, 0.8) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(30, 30, 30, 0.6) 0%, transparent 50%);
+    }
+
+    .container {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .plan-card {
+      background-color: var(--card-color);
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow), var(--glow);
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
+    .plan-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plan-price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 15px 0;
+      color: var(--accent-color);
+    }
+
+    .plan-price small {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .plan-durations {
+      margin: 25px 0;
+    }
+
+    .duration-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .duration-item:last-child {
+      border-bottom: none;
+    }
+
+    .plan-button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--accent-gradient);
+      color: #000;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .plan-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+    }
+
+    .vip-plan {
+      border: 1px solid rgba(255, 204, 0, 0.5);
+    }
+
+    .vip-plan .plan-title {
+      color: #ffcc00;
+    }
+
+    .vip-plan .plan-price {
+      color: #ffcc00;
+    }
+
+    .vip-plan .plan-button {
+      background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background-color: var(--card-color);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: 1px solid var(--border-color);
+    }
+
+    .back-button:hover {
+      background-color: rgba(0, 229, 255, 0.1);
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 30px 15px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .plans-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-robot"></i> Planos do Bot Goku</h1>
+    
+    <div class="plans-container">
+      <div class="plan-card">
+        <h3 class="plan-title"><i class="fas fa-box-open"></i> Plano Básico</h3>
+        
+        <div class="plan-price">
+          R$10,00 <small>/mês</small>
+        </div>
+        
+        <div class="plan-durations">
+          <div class="duration-item">
+            <span>1 Mês</span>
+            <strong>R$10,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>2 Meses</span>
+            <strong>R$20,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>3 Meses</span>
+            <strong>R$25,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>4 Meses</span>
+            <strong>R$35,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>5 Meses</span>
+            <strong>R$45,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>6 Meses</span>
+            <strong>R$60,00</strong>
+          </div>
+        </div>
+        
+        <a href="https://wa.me/5527998158753?text=Quero+alugar+o+Plano+Básico+do+Bot+Goku" class="plan-button" target="_blank">
+          <i class="fas fa-shopping-cart"></i> Alugar Agora
+        </a>
+      </div>
+      
+      <div class="plan-card vip-plan">
+        <h3 class="plan-title"><i class="fas fa-crown"></i> Plano VIP</h3>
+        
+        <div class="plan-price">
+          R$25,00 <small>/mês</small>
+        </div>
+        
+        <div class="plan-durations">
+          <div class="duration-item">
+            <span>1 Mês</span>
+            <strong>R$25,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>3 Meses</span>
+            <strong>R$60,00</strong>
+          </div>
+          <div class="duration-item">
+            <span>1 Ano</span>
+            <strong>R$120,00</strong>
+          </div>
+        </div>
+        
+        <a href="https://wa.me/5527998158753?text=Quero+alugar+o+Plano+VIP+do+Bot+Goku" class="plan-button" target="_blank">
+          <i class="fas fa-gem"></i> Assinar VIP
+        </a>
+      </div>
+    </div>
+    
+    <a href="/" class="back-button">
+      <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>𝐆𝐎𝐊𝐔 𝐒𝐓𝐎𝐑𝐀𝐆𝐄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0d0d0d;
+      --card-color: #1a1a1a;
+      --text-color: rgba(255, 255, 255, 0.92);
+      --text-secondary: rgba(255, 255, 255, 0.65);
+      --accent-color: #00e5ff;
+      --accent-gradient: linear-gradient(135deg, #00e5ff 0%, #00bcd4 100%);
+      --hover-color: #00c8e0;
+      --border-color: #2e2e2e;
+      --shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      --glow: 0 0 15px rgba(0, 229, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(30, 30, 30, 0.8) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(30, 30, 30, 0.6) 0%, transparent 50%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 2.4rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent-gradient);
+      border-radius: 3px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 90%;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .menu {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    li {
+      background-color: var(--card-color);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), var(--glow);
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
+    li:hover::before {
+      opacity: 0.1;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 26px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon {
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 188, 212, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    li:hover .icon {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.1);
+    }
+
+    .menu-text {
+      flex: 1;
+      font-size: 1.1rem;
+    }
+
+    .menu-arrow {
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: all 0.3s ease;
+      color: var(--accent-color);
+    }
+
+    li:hover .menu-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.85em;
+      color: var(--text-secondary);
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: var(--accent-gradient);
+    }
+
+    .version {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      background: rgba(0, 188, 212, 0.15);
+      border-radius: 12px;
+      font-size: 0.75em;
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 30px 16px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      a {
+        padding: 18px 22px;
+      }
+      
+      .icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+      }
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Bem-vindo</h1>
+      <p class="subtitle">Aqui você terá acesso a vários tipos de coisas ao seu favor</p>
+      <p class="subtitle">Desde aluguel do Goku bot até contas de Streaming disponíveis</p>
+    </div>
+    
+    <nav class="menu">
+      <ul>
+        <li>
+          <a href="aluguel.html">
+            <span class="icon"><i class="fas fa-box-open"></i></span>
+            <span class="menu-text">Aluguel</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="contas.html">
+            <span class="icon"><i class="fas fa-wallet"></i></span>
+            <span class="menu-text">Contas</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="jogo.html">
+            <span class="icon"><i class="fas fa-handshake"></i></span>
+            <span class="menu-text">Jogo</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
+          </a>
+        </li>
+        <!-- Novos itens adicionados -->
+        <li>
+          <a href="https://chat.whatsapp.com/BfEvitDMdfRGul5pJxXegl?mode=r_t" target="_blank" rel="noopener noreferrer">
+            <span class="icon"><i class="fab fa-whatsapp"></i></span>
+            <span class="menu-text">Grupo Oficial</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://whatsapp.com/channel/0029VaO55oVEawdhIsQJZ53j" target="_blank" rel="noopener noreferrer">
+            <span class="icon"><i class="fas fa-bullhorn"></i></span>
+            <span class="menu-text">Canal Oficial</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <footer>
+      Goku System <span class="version">By albino Modz</span>
+      <div style="margin-top: 8px;">&copy; 2025 Todos os direitos reservados</div>
+    </footer>
+  </div>
+
+  <script>
+    // Efeito ripple ajustado para ignorar links externos
+    document.querySelectorAll('a').forEach(link => {
+      if (!link.hasAttribute('target') || link.getAttribute('target') !== '_blank') {
+        link.addEventListener('click', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const ripple = document.createElement('span');
+          ripple.classList.add('ripple');
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
